@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khaatabook</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <style>
+        @font-face {
+            font-family: neue;
+            src: url("/NeueMachina-Regular.otf");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: neue;
+        }
+    </style>
+    <main class="h-screen w-full bg-white px-20 relative ">
+
+        <nav class="flex items-center justify-between py-6">
+            <h3><a class="text-xl font-semibold" href="/">Khaatabook</a></h3>
+            <ul class="flex items-center justify-center gap-10">
+                <li><a href="/">Home</a></li>
+                <li><a href="/create">Create New Hisaab</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h3 class="font-semibold mt-6">All Hisaab Kitab</h3>
+
+            <div class="list py-6 flex flex-col gap-4">
+                <% if(files.length > 0){ %>
+                    <% files.forEach(function(file) { %>
+                        <div
+                            class="outer py-2 px-4 bg-blue-600 w-fit rounded-md text-white justify-between flex gap-24 items-center">
+                            <div class="left  flex gap-4 items-center">
+                                <h1 style="width:170px;display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"
+                                    class="name">
+                                    <%=file.split(".")[0]%>
+                                </h1>
+                                <a href="/view/<%=file%>"> <i
+                                        class="text-xl bg-white p-1 text-blue-600 rounded-full leading-none ri-arrow-right-line"></i></a>
+                            </div>
+                            <div class="right flex gap-3 items-center">
+                                <a href="/edit/<%=file%>"><i class=" text-xl ri-pencil-line"></i></a>
+                                <i
+                                    class="text-xl <%=file%>  bg-white p-1 text-red-600 rounded-full leading-none cursor-pointer ri-delete-bin-line"></i>
+                            </div>
+                            <div
+                                class="delete-popup absolute flex flex-col items-center hidden h-56 w-96 bg-slate-500 rounded-xl  top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
+                                <h1 class="text-center m-4 mt-16">Are you Sure?<br>
+                                    <span class="text-sm">Delete <%=file%></span>
+                                </h1>
+                                <div class=" mt-4 flex gap-4 buttons">
+                                    <button class=" No bg-blue-500 ml-1 my-4 px-4 py-2 rounded-md text-white cursor-pointer">Cancel</button>
+                                    <a class="bg-red-500 ml-1 my-4 px-4 py-2 rounded-md text-white cursor-pointer"
+                                        href="/delete/<%= file %>">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <% }); %>
+
+                <%} else{%>
+                    <h1 class="text-gray-300">Nothing to show, Create any hisaab to see Something!</h1>
+                <%} %>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+<script>
+    let box = document.querySelectorAll('.delete-popup');
+    document.querySelectorAll(".ri-delete-bin-line").forEach((btn,index)=>{
+        btn.addEventListener("click",()=>{
+            box[index].style.display = `flex`
+        })
+    })
+    document.querySelectorAll(".No").forEach((no,index)=>{
+        no.addEventListener("click",()=>{
+            box[index].style.display = `none`
+        })
+    })
+</script>
+
+</html>

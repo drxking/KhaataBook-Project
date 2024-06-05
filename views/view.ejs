@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Hisaab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <style>
+        @font-face {
+            font-family: neue;
+            src: url("/NeueMachina-Regular.otf");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: neue;
+        }
+    </style>
+    <main class="h-screen w-full bg-white px-20 ">
+        <nav class="flex items-center justify-between py-6">
+            <h3><a class="text-xl font-semibold" href="/">Khaatabook</a></h3>
+            <ul class="flex items-center justify-center gap-10">
+                <li><a href="/">Home</a></li>
+                <li><a href="/create">Create New Hisaab</a></li>
+            </ul>
+        </nav>
+        <section class="py-10">
+            <h3 class="text-xl my-4">Hissab of <span class="font-semibold"><%=name%></span></h3>
+            <form class="flex items-start flex-col w-1/2" action="/edit" method="post">
+                <input class="border-2 border-gray-500 rounded-md px-4 py-2 w-full hidden" type="text" placeholder="Name" name="prevName" value="<%=name%>">
+                
+                <p class="text-md font-semibold"><%=data%></p>
+            </form>
+            <a href="/edit/<%=name%>"><button class="font-semibold my-4 py-2 rounded-md text-gray-400 cursor-pointer">Edit</button></a>
+            <a href="/"><button class="mr-1 my-4 px-4 py-2 font-semibold rounded-md text-blue-500 cursor-pointer">Go Back</button></a>
+        </section>
+    </main>
+</body>
+
+</html>

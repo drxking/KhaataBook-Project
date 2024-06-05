@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Hisaab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <style>
+        @font-face {
+            font-family: neue;
+            src: url("/NeueMachina-Regular.otf");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: neue;
+        }
+        textarea:focus,
+        input:focus{
+            outline: none;
+        }
+    </style>
+    <main class="h-screen w-full bg-white px-20 ">
+        <nav class="flex items-center justify-between py-6">
+            <h3><a class="text-xl font-semibold" href="/">Khaatabook</a></h3>
+            <ul class="flex items-center justify-center gap-10">
+                <li><a href="/">Home</a></li>
+                <li><a href="/create">Create New Hisaab</a></li>
+            </ul>
+        </nav>
+        <section class="py-10">
+            <h3 class="font-semibold my-4">Create New Hisaab</h3>
+            <form class="flex items-start flex-col w-1/2" action="/save" method="post">
+                <input class=" rounded-md px-4 py-2 w-[70%]  shadow-[0 2px 2px 2px black] bg-slate-200" type="text" placeholder="Title" name="name" >
+                <textarea class="rounded-md p-4 mt-2 w-full h-72 bg-slate-200 resize-none"  type="text" placeholder="Description" name="message"></textarea>
+                <input class="bg-blue-600 my-4 px-4 py-2 rounded-md text-white cursor-pointer" type="submit" value="Create New Hisaab">
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
